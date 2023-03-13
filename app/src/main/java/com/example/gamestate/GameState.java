@@ -15,8 +15,9 @@ public class GameState {
     // Instance variables
     private int currentPlayerIndex; //player who's turn it is
     private List<Card> deck;
-    private List<Card> playerHands; //Map of the player ID to their hand of cards
-    //private Map<Integer, Integer> playerScores; // ..scores?!
+    private List<Card> playerHands; //Array list of players cards
+
+    private List<Card> opponentDeck; //Array list of opponent cards
     private int yourScore;
     private int opponentScore;
     private boolean gameOver;
@@ -25,17 +26,10 @@ public class GameState {
     public GameState() {
         currentPlayerIndex = 0;
         deck = createDeck();
-        //deck = new ArrayList<>();
         yourScore = 0;
         opponentScore = 0;
-        //playerHands = NULL;
-//        playerHands = new HashMap<>();
-//        playerHands.put(0, new ArrayList<Card>());
-//        playerHands.put(1, new ArrayList<Card>());
-        dealCards();
-//        playerScores = new HashMap<>();
-//        playerScores.put(0, 0);
-//        playerScores.put(1, 0);
+        dealCards(playerHands);
+        dealCards(opponentDeck);
         gameOver = false;
     }
 
@@ -51,65 +45,17 @@ public class GameState {
     }
 
     // Deal the cards to the players
-    private void dealCards() {
+    private void dealCards(List<Card> j) {
         for (int i = 0; i < HAND_SIZE; i++) {
             Random random = new Random();
             int k = random.nextInt(deck.size());
-            playerHands.add(deck.get(k));
+            j.add(deck.get(k));
             deck.remove(k);
 
         }
     }
 
-    // Get the current player index
-    public int getCurrentPlayerIndex() {
-        return currentPlayerIndex;
-    }
 
-    // Set the current player index
-    public void setCurrentPlayerIndex(int currentPlayerIndex) {
-        this.currentPlayerIndex = currentPlayerIndex;
-    }
-
-    // Get the deck
-    public List<Card> getDeck() {
-        return deck;
-    }
-
-    // Set the deck
-    public void setDeck(List<Card> deck) {
-        this.deck = deck;
-    }
-
-    // Get the player hands
-    public Map<Integer, List<Card>> getPlayerHands() {
-        return playerHands;
-    }
-
-    // Set the player hands
-    public void setPlayerHands(Map<Integer, List<Card>> playerHands) {
-        this.playerHands = playerHands;
-    }
-
-    // Get the player scores
-    public Map<Integer, Integer> getPlayerScores() {
-        return playerScores;
-    }
-
-    // Set the player scores
-    public void setPlayerScores(Map<Integer, Integer> playerScores) {
-        this.playerScores = playerScores;
-    }
-
-    // Check if the game is over
-    public boolean isGameOver() {
-        return gameOver;
-    }
-
-    // Set the game over state
-    public void setGameOver(boolean gameOver) {
-        this.gameOver = gameOver;
-    }
     //This toString print the state of the game.
     //"StringBuilder" google that!!!!
     @Override
