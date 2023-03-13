@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 public class GameState {
     // Constants
@@ -14,8 +15,10 @@ public class GameState {
     // Instance variables
     private int currentPlayerIndex; //player who's turn it is
     private List<Card> deck;
-    private Map<Integer, List<Card>> playerHands; //Map of the player ID to their hand of cards
-    private Map<Integer, Integer> playerScores; // ..scores?!
+    private List<Card> playerHands; //Map of the player ID to their hand of cards
+    //private Map<Integer, Integer> playerScores; // ..scores?!
+    private int yourScore;
+    private int opponentScore;
     private boolean gameOver;
 
     // Constructor
@@ -23,13 +26,16 @@ public class GameState {
         currentPlayerIndex = 0;
         deck = createDeck();
         //deck = new ArrayList<>();
-        playerHands = new HashMap<>();
-        playerHands.put(0, new ArrayList<Card>());
-        playerHands.put(1, new ArrayList<Card>());
+        yourScore = 0;
+        opponentScore = 0;
+        //playerHands = NULL;
+//        playerHands = new HashMap<>();
+//        playerHands.put(0, new ArrayList<Card>());
+//        playerHands.put(1, new ArrayList<Card>());
         dealCards();
-        playerScores = new HashMap<>();
-        playerScores.put(0, 0);
-        playerScores.put(1, 0);
+//        playerScores = new HashMap<>();
+//        playerScores.put(0, 0);
+//        playerScores.put(1, 0);
         gameOver = false;
     }
 
@@ -38,7 +44,7 @@ public class GameState {
         List<Card> deck = new ArrayList<>();
         for (int suit = 0; suit < 4; suit++) {
             for (int rank = 1; rank <= 13; rank++) {
-                deck.add(new Card(suit, rank));
+                deck.add(new Card(rank));
             }
         }
         return deck;
@@ -47,9 +53,11 @@ public class GameState {
     // Deal the cards to the players
     private void dealCards() {
         for (int i = 0; i < HAND_SIZE; i++) {
-            for (int j = 0; j < NUM_PLAYERS; j++) {
-                playerHands.get(j).add(deck.remove(0));
-            }
+            Random random = new Random();
+            int k = random.nextInt(deck.size());
+            playerHands.add(deck.get(k));
+            deck.remove(k);
+
         }
     }
 
