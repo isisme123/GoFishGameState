@@ -9,7 +9,7 @@ public class GameState {
     // Constants
     public static final int NUM_PLAYERS = 2;
     public static final int NUM_CARDS = 52;
-    public static final int HAND_SIZE = 5;
+    public static final int HAND_SIZE = 7;
 
     // Instance variables
     private int currentPlayerIndex; //player who's turn it is
