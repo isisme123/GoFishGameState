@@ -2,6 +2,7 @@ package com.example.gamestate;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Perform action here
+                EditText edit_text = (EditText) findViewById(R.id.edit_text);
+                //Printing the current state of the Go Fish game
+                GameState gameState = new GameState();
+                String printState = "The game state is: " + gameState.toString();
+                Log.d("Go Fish", printState);
             }
         });
     }

@@ -104,7 +104,8 @@ public class GameState {
             }
         }
         return count == 4;
-    }// Draw card from deck
+    }
+    // Draw card from deck
     public boolean drawCard(int playerIndex) {
         if (playerIndex == this.playerIndex) {
             if (deck.size() > 0) {
@@ -200,11 +201,6 @@ public class GameState {
                 ", gameOver=" + gameOver +
                 '}';
     }
-
-    //Printing the current state of the Go Fish game
-    GameState gameState = new GameState();
-    String printState = "The game state is: " + gameState.toString();
-    Log.i("Go Fish", printState);
 }
 
 
