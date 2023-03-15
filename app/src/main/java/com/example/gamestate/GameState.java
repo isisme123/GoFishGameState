@@ -3,9 +3,7 @@ package com.example.gamestate;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 public class GameState {
@@ -53,7 +51,7 @@ public class GameState {
         }
 
         for(int i = 0; i < deep.opponentHands.size(); i++) {
-            this.opponentHands.add(new Card(deep.opponentDeck.get(i)));
+            this.opponentHands.add(new Card(deep.opponentHands.get(i)));
         }
 
         gameOver = deep.gameOver;
