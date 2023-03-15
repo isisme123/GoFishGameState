@@ -24,13 +24,34 @@ public class GameState {
 
     // Constructor
     public GameState() {
-        currentPlayerIndex = 0;
-        deck = createDeck();
-        yourScore = 0;
-        opponentScore = 0;
-        dealCards(playerHands);
-        dealCards(opponentDeck);
-        gameOver = false;
+        this.currentPlayerIndex = 0;
+        this.deck = createDeck();
+        this.yourScore = 0;
+        this.opponentScore = 0;
+        dealCards(this.playerHands);
+        dealCards(this.opponentDeck);
+        this.gameOver = false;
+    }
+
+    public GameState(GameState deep) {
+        currentPlayerIndex = deep.currentPlayerIndex;
+
+        for(int i = 0; i < deep.deck.size(); i++) {
+            this.deck.add(new Card(deep.deck.get(i)));
+        }
+
+        yourScore = deep.yourScore;
+        opponentScore = deep.opponentScore;
+
+        for(int i = 0; i < deep.playerHands.size(); i++) {
+            this.playerHands.add(new Card(deep.playerHands.get(i)));
+        }
+
+        for(int i = 0; i < deep.opponentDeck.size(); i++) {
+            this.opponentDeck.add(new Card(deep.opponentDeck.get(i)));
+        }
+
+        gameOver = deep.gameOver;
     }
 
     // Create a new deck of cards

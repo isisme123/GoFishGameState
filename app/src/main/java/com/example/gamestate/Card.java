@@ -21,6 +21,12 @@ public class Card {
         this.rank = rank;
     }
 
+    public Card(Card c) {
+        this.rank = c.rank;
+    }
+    // Deep Constructor
+
+
     // Get the suit
     //public int getSuit() {
         //return suit;
