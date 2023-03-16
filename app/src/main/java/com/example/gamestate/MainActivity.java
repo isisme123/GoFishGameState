@@ -23,12 +23,13 @@ public class MainActivity extends AppCompatActivity {
         runTestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Perform action here
-                EditText edit_text = (EditText) findViewById(R.id.edit_text);
-                //Printing the current state of the Go Fish game
-                GameState gameState = new GameState();
-                String printState = "The game state is: " + gameState.toString();
-                Log.d("Go Fish", printState);
+//                EditText edit_text = (EditText) findViewById(R.id.edit_text);
+//                //Printing the current state of the Go Fish game
+//                GameState firstInstance = new GameState(); //creating firstInstance
+//                String printState = "The game state is: " + firstInstance.toString();
+//                GameState secondInstance = new GameState(firstInstance);
+
+
             }
         });
     }
