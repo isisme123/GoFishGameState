@@ -1,23 +1,25 @@
 package com.example.gamestate;
 
+/**
+ * This class has all the information about the card, which get used in the game
+ * state class.
+ * @author Isaela Timogene-Julien
+ * @author Jude Reynolds
+ * @author Alexis Nguyen
+ * @author Heidi Pham
+ * @version 1.0
+ */
+
 public class Card {
     // Constants
-//    public static final int SPADES = 0;
-//    public static final int HEARTS = 1;
-//    public static final int CLUBS = 2;
-//    public static final int DIAMONDS = 3;
     public static final int ACE = 1;
     public static final int JACK = 11;
     public static final int QUEEN = 12;
     public static final int KING = 13;
-
-    // Instance variables
-    //private int suit;
     private int rank;
 
     // Constructor
     public Card(int rank) {
-        //this.suit = suit;
         this.rank = rank;
     }
 
@@ -25,14 +27,6 @@ public class Card {
         this.rank = c.rank;
     }
     // Deep Constructor
-
-
-    // Get the suit
-    //public int getSuit() {
-        //return suit;
-    //}
-
-    // Get the rank
     public int getRank() {
         return rank;
     }
@@ -51,16 +45,6 @@ public class Card {
     // Get the card's string representation
     @Override
     public String toString() {
-//        String suitString;
-//        if (suit == SPADES) {
-//            suitString = "S";
-//        } else if (suit == HEARTS) {
-//            suitString = "H";
-//        } else if (suit == CLUBS) {
-//            suitString = "C";
-//        } else {
-//            suitString = "D";
-//        }
         String rankString;
         if (rank == ACE) {
             rankString = "A";

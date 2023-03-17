@@ -6,6 +6,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * This class has all the information about the current state of the Go Fish game.
+ * @author Isaela Timogene-Julien
+ * @author Jude Reynolds
+ * @author Alexis Nguyen
+ * @author Heidi Pham
+ * @version 1.0
+ */
+
 public class GameState {
     // Constants
     public static final int NUM_PLAYERS = 2;
@@ -28,6 +37,9 @@ public class GameState {
         this.playerIndex = 0;
         this.opponentIndex = 0;
         this.deck = createDeck();
+        //initializing playerHands and opponentHands to fix nullPointerException
+        this.playerHands = new ArrayList<>();
+        this.opponentHands = new ArrayList<>();
         this.playerScore = 0;
         this.opponentScore = 0;
         dealCards(this.playerHands);
@@ -38,7 +50,8 @@ public class GameState {
     public GameState(GameState deep) {
         playerIndex = deep.playerIndex;
         opponentIndex = deep.opponentIndex;
-
+        //Deck needs to be initialized
+        deck = new ArrayList<>();
         for(int i = 0; i < deep.deck.size(); i++) {
             this.deck.add(new Card(deep.deck.get(i)));
         }
@@ -46,10 +59,12 @@ public class GameState {
         playerScore = deep.playerScore;
         opponentScore = deep.opponentScore;
 
+        this.playerHands = new ArrayList<>();
         for(int i = 0; i < deep.playerHands.size(); i++) {
             this.playerHands.add(new Card(deep.playerHands.get(i)));
         }
 
+        this.opponentHands = new ArrayList<>();
         for(int i = 0; i < deep.opponentHands.size(); i++) {
             this.opponentHands.add(new Card(deep.opponentHands.get(i)));
         }
@@ -136,6 +151,13 @@ public class GameState {
         return false;
     }
 
+    public int getDrawCard () {
+        return playerIndex;
+    }
+    public int getAskForCard () {
+        return playerIndex;
+    }
+
     // Get the current player index
     public int getCurrentPlayerIndex () {
         return playerIndex;
@@ -207,18 +229,18 @@ public class GameState {
     }
 
     //This toString print the state of the game.
-    //String concatenation?! THIS MIGHT BE WRONG HEHE, IDK WHAT I'M DOING
+    //String concatenation?!
     @Override
     public String toString() {
         return "GameState{" +
-                "playerIndex=" + playerIndex +
-                ", opponentIndex=" + opponentIndex +
-                ", deck=" + deck +
-                ", playerHands=" + playerHands +
-                ", opponentHands=" + opponentHands +
-                ", playerScore=" + playerScore +
-                ", opponentScore=" + opponentScore +
-                ", gameOver=" + gameOver +
+                "playerIndex = " + playerIndex +
+                ", opponentIndex = " + opponentIndex +
+                ", deck = " + deck +
+                ", playerHands = " + playerHands +
+                ", opponentHands = " + opponentHands +
+                ", playerScore = " + playerScore +
+                ", opponentScore = " + opponentScore +
+                ", gameOver = " + gameOver +
                 '}';
     }
 }
