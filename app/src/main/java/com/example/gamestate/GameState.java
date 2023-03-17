@@ -47,6 +47,8 @@ public class GameState {
         this.gameOver = false;
     }
 
+    /*The source for the information used in the game constructor is
+    professor Steven Libby.*/
     public GameState(GameState deep) {
         playerIndex = deep.playerIndex;
         opponentIndex = deep.opponentIndex;
